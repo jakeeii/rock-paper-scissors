@@ -7,8 +7,10 @@
 
 const choices = ["rock", "paper", "scissors"]
 
-let playerSelection = playerSelect();
-let computerSelection = computerSelect();
+
+let playerScore = 0
+let computerScore = 0
+let ties = 0
 
 function computerSelect() {
   return choices[Math.floor(Math.random() * choices.length)]
@@ -23,16 +25,21 @@ function playerSelect() {
   return input
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
+  let playerSelection = playerSelect();
+  let computerSelection = computerSelect();
   if (playerSelection === computerSelection) {
+    ++ties
     return "Tie!";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") || 
     (playerSelection === "scissors" && computerSelection === "paper") 
   ) {
+    ++playerScore
     return ("You win! " + capitalize(playerSelection) + " beats " + computerSelection + ".");
   } else {
+    ++computerScore
     return ("You lose! " + capitalize(computerSelection) + " beats " + playerSelection + ".");
   }
 }
@@ -41,4 +48,25 @@ function capitalize(word) {
   return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
-console.log(playRound(playerSelection, computerSelection));
+function displayWinner() {
+  if (playerScore > computerScore) {
+    return "Player wins!";
+  } else if (computerScore > playerScore) {
+    return "Computer wins!";
+  } else {
+    return "It's a tie!";
+  }
+}
+
+function game() {
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
+  console.log("Game over!")
+  console.log("Player score: " + playerScore)
+  console.log("Computer score: " + computerScore)
+  console.log("Ties: " + ties)
+  console.log(displayWinner());
+}
+
+game();
