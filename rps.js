@@ -6,6 +6,7 @@
 //Display game over and show the winner
 
 const choices = ["rock", "paper", "scissors"]
+
 let playerSelection = playerSelect();
 let computerSelection = computerSelect();
 
@@ -19,5 +20,25 @@ function playerSelect() {
     input = window.prompt("Please choose either 'rock', 'paper', or 'scissors'.");
   }
   input = input.toLowerCase();
-  console.log(input);
+  return input
 }
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection === computerSelection) {
+    return "Tie!";
+  } else if (
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "paper" && computerSelection === "rock") || 
+    (playerSelection === "scissors" && computerSelection === "paper") 
+  ) {
+    return ("You win! " + capitalize(playerSelection) + " beats " + computerSelection + ".");
+  } else {
+    return ("You lose! " + capitalize(computerSelection) + " beats " + playerSelection + ".");
+  }
+}
+
+function capitalize(word) {
+  return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+console.log(playRound(playerSelection, computerSelection));
