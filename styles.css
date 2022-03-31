@@ -1,7 +1,15 @@
+* {
+  font-family: cursive;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
+}
+
+html {
+  background-color: aquamarine;
 }
 
 .page {
@@ -27,12 +35,28 @@ body {
   padding: 50px 50px;
   position: absolute;
   top: 25%;
+  font-size: 30px;
+}
+
+#player-score {
+  color: darkgreen;
+}
+
+#computer-score {
+  color: darkred;
 }
 
 .scores {
   margin: 40px 40px;
   display: flex;
   flex-direction: column;
-  gap: 15px
+  gap: 15px;
+  font-size: 25px;
 }
 
+button {
+  padding: 5px 20px;
+  flex: 1;
+  font-size: 25px;
+  font-weight: 800;
+}

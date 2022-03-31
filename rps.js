@@ -32,7 +32,7 @@ function game() {
   let playerSelection = this.id;
   let computerSelection = computerSelect();
   if (playerSelection === computerSelection) {
-    updateText("Tie!");
+    updateText("Tie! You both picked " + computerSelection + ". Try again.");
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
     (playerSelection === "paper" && computerSelection === "rock") || 
