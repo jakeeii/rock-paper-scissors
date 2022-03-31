@@ -2,32 +2,31 @@ html,
 body {
   margin: 0;
   padding: 0;
-  /* height: 100%;
-  width: 100% */
 }
-/* 
-body {
-  height: 100vh;
-  width: 100vw;
-} */
 
-/* .page {
-  height: 100%;
-  width: 100%;
+.page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+}
 
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 120px;
+  gap: 100px;
   position: absolute;
   top: 50%;
   right: 50%;
   left: 50%;
+}
+
+#start {
+  text-align: center;
+  padding: 50px 50px;
+  position: absolute;
+  top: 25%;
 }
 
 .scores {
@@ -36,3 +35,4 @@ body {
   flex-direction: column;
   gap: 15px
 }
+

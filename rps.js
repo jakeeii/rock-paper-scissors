@@ -9,20 +9,19 @@ const choices = ["rock", "paper", "scissors"]
 
 let playerScore = 0
 let computerScore = 0
-let ties = 0
 
 function computerSelect() {
   return choices[Math.floor(Math.random() * choices.length)]
 }
 
-// function playerSelect() {
-//   let input = window.prompt("Please choose either 'rock', 'paper', or 'scissors'.");
-//   while (input == null) {
-//     input = window.prompt("Please choose either 'rock', 'paper', or 'scissors'.");
-//   }
-//   input = input.toLowerCase();
-//   return input
-// }
+function updateScore() {
+  document.getElementById('player-score').textContent = "Player Score: " + playerScore
+  document.getElementById('computer-score').textContent = "Computer Score: " + computerScore
+}
+
+function updateText(string) {
+  document.getElementById('start').textContent = string
+}
 
 
 const rock = document.querySelector('.rock')
@@ -34,11 +33,12 @@ document.getElementById('paper').onclick = playRound
 document.getElementById('scissors').onclick = playRound
 
 function playRound() {
+  updateScore(); //remove later
   let playerSelection = this.id;
   let computerSelection = computerSelect();
   if (playerSelection === computerSelection) {
     console.log('tie');
-    ++ties
+    updateText("Tie!");
     return "Tie!";
   } else if (
     (playerSelection === "rock" && computerSelection === "scissors") ||
@@ -47,9 +47,13 @@ function playRound() {
   ) {
     console.log('you win');
     ++playerScore
+    updateScore();
+    updateText("You win! " + capitalize(playerSelection) + " beats " + computerSelection + ".")
     return ("You win! " + capitalize(playerSelection) + " beats " + computerSelection + ".");
   } else {
     ++computerScore
+    updateScore();
+    updateText("You lose! " + capitalize(computerSelection) + " beats " + playerSelection + ".")
     console.log('you lose');
     return ("You lose! " + capitalize(computerSelection) + " beats " + playerSelection + ".");
   }
@@ -69,15 +73,16 @@ function displayWinner() {
   }
 }
 
-// function game() {
-//   for (let i = 0; i < 5; i++) {
-//     playRound();
-//   }
+function game() {
+  initializeScore();
+  for (let i = 0; i < 5; i++) {
+    playRound();
+  }
 //   console.log("Game over!")
 //   console.log("Player score: " + playerScore)
 //   console.log("Computer score: " + computerScore)
 //   console.log("Ties: " + ties)
 //   console.log(displayWinner());
-// }
+}
 
 // game();
